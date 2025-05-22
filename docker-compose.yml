@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - ./backend/database:/app/database
+    environment:
+      - NODE_ENV=development
+      - DB_PATH=/app/database/database.sqlite
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules 
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_CACHE_DIR=/tmp/vite
+    command: npm run dev
