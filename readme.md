@@ -32,6 +32,10 @@ docker-compose up
 
 http://localhost:5173/
 
+# User Admin default
+email: admin@admin.com
+pcontraseña: admin123
+
 # Autor
 
 Rodolfo Palacios
